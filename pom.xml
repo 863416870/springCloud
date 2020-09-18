@@ -5,8 +5,202 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cc.yc</groupId>
-    <artifactId>fan</artifactId>
+    <artifactId>fansCloud</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <!-- Jar 版本控制 -->
+    <properties>
+        <!-- Java版本 -->
+        <java.version>1.8</java.version>
+        <skipTests>true</skipTests>
+        <!-- 编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- Maven 编译版本 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <!-- Spring Boot -->
+        <springboot.version>2.3.3.RELEASE</springboot.version>
+        <!-- Spring Cloud -->
+        <springcloud.version>Hoxton.SR5</springcloud.version>
+        <!-- Spring Cloud Alibaba -->
+        <springcloud.alibaba.version>2.2.1.RELEASE</springcloud.alibaba.version>
+        <spring-data-commons.version>2.3.3.RELEASE</spring-data-commons.version>
+        <!-- mybatis-plus -->
+        <mybatis-plus.version>3.3.2</mybatis-plus.version>
+        <!-- hutool -->
+        <hutool.version>5.3.8</hutool.version>
+        <!-- oss -->
+        <aliyun-oss.version>3.10.2</aliyun-oss.version>
+        <!-- mysql -->
+        <mysql-connector.version>8.0.16</mysql-connector.version>
+        <!-- Swagger-->
+        <knife4j.version>2.0.4</knife4j.version>
+        <!-- common.lib -->
+        <common.lib>1.0-SNAPSHOT</common.lib>
+        <admin-starter-server.version>2.2.3</admin-starter-server.version>
+        <!-- jwt -->
+        <nimbus-jose-jwt.version>8.19</nimbus-jose-jwt.version>
+        <jjwt.version>0.9.0</jjwt.version>
+        <!-- nacos -->
+        <nacos.ip>47.93.119.95</nacos.ip>
+        <nacos.port>8848</nacos.port>
+        <!-- docker -->
+        <docker.host>http://192.168.3.101:2375</docker.host>
+        <docker.maven.plugin.version>1.1.0</docker.maven.plugin.version>
+    </properties>
+
+    <!-- 子模块继承之后，提供作用：锁定版本+子模块不用写groupId和version  -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- SpringBoot 依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Spring Cloud 依赖 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${springcloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Spring Cloud Alibaba依赖 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${springcloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- mybatis plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!-- 阿里云OSS -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-oss.version}</version>
+            </dependency>
+            <!--Mysql数据库驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+
+            <!--Knife4j API文档生产工具-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <!--集成SpringBoot Admin监控-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${admin-starter-server.version}</version>
+            </dependency>
+            <!--Hutool Java工具包-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <!--JWT(Json Web Token)登录支持-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <!--JWT(Json Web Token)登录支持-->
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${nimbus-jose-jwt.version}</version>
+            </dependency>
+            <!--SpringData工具包-->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-commons</artifactId>
+                <version>${spring-data-commons.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <!-- SpringBoot整合lombok组件 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!--监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- nacos client -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <!--nacos config -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <!--SpringCloud整合sentinel熔断限流降级依赖 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker.maven.plugin.version}</version>
+                    <configuration>
+                        <imageName>mall/${project.artifactId}:${project.version}</imageName>
+                        <dockerHost>${docker.host}</dockerHost>
+                        <baseImage>java:8</baseImage>
+                        <entryPoint>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</entryPoint>
+                        <resources>
+                            <resource>
+                                <targetPath>/</targetPath>
+                                <directory>${project.build.directory}</directory>
+                                <include>${project.build.finalName}.jar</include>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 
 </project>
