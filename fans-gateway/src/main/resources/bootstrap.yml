@@ -1,0 +1,44 @@
+fans:
+  nacos:
+    ip: ${NACOS_IP:@nacos.ip@}
+    port: ${NACOS_PORT:@nacos.port@}
+    namespace: ${NACOS_ID:@nacos.namespace@}
+    username: ${NACOS_USERNAME:@nacos.username@}
+    password: ${NACOS_PASSWORD:@nacos.password@}
+
+server:
+  port: 8888
+
+spring:
+  profiles:
+    active: '@profileActive@'
+  application:
+    name: @artifactId@
+  cloud:
+    nacos: #此处为nacos 单一配置
+      server-addr: ${fans.nacos.ip}:${fans.nacos.port}
+      config:
+        file-extension: yaml
+        refresh-enabled: true
+#        extension-configs:
+#          - dataId: common.yaml
+#            group: DEFAULT_GROUP
+#            refresh: false
+    gateway:
+      locator:
+        enabled: true
+        lower-case-service-id: true #使用小写service-id
+      routes:
+        #诊所运营端后台模块
+        - id: clinic-admin-service      # 唯一的服务ID
+          uri: lb://clinic-admin-service # 注册中心的服务名称，实现负载均衡
+          predicates:
+            - Path=/clinicAdmin/**  #所有业务的请求前缀
+          filters:
+            - StripPrefix=1
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: debug

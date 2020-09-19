@@ -8,19 +8,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <description>mybatis 封装</description>
-    <artifactId>fans-common-mybatis</artifactId>
 
+    <artifactId>fans-common-swagger</artifactId>
+    <description>swagger文档</description>
     <dependencies>
-        <!--mybatis-->
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-        <!--数据库-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-micro-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 </project>

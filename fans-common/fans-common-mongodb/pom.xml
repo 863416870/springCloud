@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fans-common-util</artifactId>
-    <dependencies>
-        <!-- BeanUtils 深拷贝 -->
-        <dependency>
-            <groupId>com.github.dozermapper</groupId>
-            <artifactId>dozer-core</artifactId>
-            <version>6.5.0</version>
-        </dependency>
-    </dependencies>
+    <artifactId>fans-common-mongodb</artifactId>
+
 
 </project>
