@@ -18,7 +18,6 @@
         <module>fans-common-swagger</module>
         <module>fans-common-mongodb</module>
         <module>fans-common-redis</module>
-
     </modules>
 
 

@@ -1,0 +1,35 @@
+fans:
+  nacos:
+    ip: ${NACOS_IP:@nacos.ip@}
+    port: ${NACOS_PORT:@nacos.port@}
+    namespace: ${NACOS_ID:@nacos.namespace@}
+    username: ${NACOS_USERNAME:@nacos.username@}
+    password: ${NACOS_PASSWORD:@nacos.password@}
+spring:
+  application:
+    name: system-service
+  cloud:
+    nacos: #此处为nacos 单一配置
+      server-addr: ${fans.nacos.ip}:${fans.nacos.port}
+      config:
+        file-extension: yaml
+        refresh-enabled: true
+        extension-configs:
+          - dataId: common.yaml
+            group: DEFAULT_GROUP
+            refresh: false
+#  data:
+#    mongodb:
+#      host: 10.11.16.1
+#      port: 27017
+#      database: cm_data
+#      username: admin
+#      password: yzy@123456
+  data:
+    mongodb:
+      uri: mongodb://10.11.16.1:27017
+      database: user
+#  profiles:
+#    active: '@profileActive@'
+
+

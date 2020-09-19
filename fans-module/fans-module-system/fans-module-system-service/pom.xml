@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>fans-module-system</artifactId>
+        <groupId>cc.young</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>fans-module-system-service</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>cc.young</groupId>
+            <artifactId>fans-common-mongodb</artifactId>
+            <version>${common.lib}</version>
+        </dependency>
+        <dependency>
+            <groupId>cc.young</groupId>
+            <artifactId>fans-common-core</artifactId>
+            <version>${common.lib}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <filters>
+            <filter>../../../src/main/filters/config.properties</filter>
+        </filters>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
