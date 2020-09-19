@@ -10,8 +10,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>fans-common</module>
+        <module>fans-monitor</module>
     </modules>
-
     <!-- Jar 版本控制 -->
     <properties>
         <!-- Java版本 -->
@@ -47,57 +47,16 @@
         <!-- jwt -->
         <nimbus-jose-jwt.version>8.19</nimbus-jose-jwt.version>
         <jjwt.version>0.9.0</jjwt.version>
+        <snakeyaml.version>1.25</snakeyaml.version>
         <!-- nacos -->
         <nacos.ip>47.93.119.95</nacos.ip>
         <nacos.port>8848</nacos.port>
+
         <!-- docker -->
         <docker.host>http://192.168.3.101:2375</docker.host>
         <docker.maven.plugin.version>1.1.0</docker.maven.plugin.version>
     </properties>
 
-    <!-- Jar 版本控制 -->
-    <properties>
-        <!-- Java版本 -->
-        <java.version>1.8</java.version>
-        <skipTests>true</skipTests>
-        <!-- 编码 -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!-- Maven 编译版本 -->
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <!-- Spring Boot -->
-        <springboot.version>2.3.3.RELEASE</springboot.version>
-        <!-- Spring Cloud -->
-        <springcloud.version>Hoxton.SR5</springcloud.version>
-        <!-- Spring Cloud Alibaba -->
-        <springcloud.alibaba.version>2.2.1.RELEASE</springcloud.alibaba.version>
-        <spring-data-commons.version>2.3.3.RELEASE</spring-data-commons.version>
-        <!-- mybatis-plus -->
-        <mybatis-plus.version>3.3.2</mybatis-plus.version>
-        <!-- hutool -->
-        <hutool.version>5.3.8</hutool.version>
-        <!-- oss -->
-        <aliyun-oss.version>3.10.2</aliyun-oss.version>
-        <!-- mysql -->
-        <mysql-connector.version>8.0.16</mysql-connector.version>
-        <!-- Swagger-->
-        <knife4j.version>2.0.4</knife4j.version>
-        <!-- common.lib -->
-        <common.lib>1.0-SNAPSHOT</common.lib>
-        <admin-starter-server.version>2.2.3</admin-starter-server.version>
-        <!-- jwt -->
-        <nimbus-jose-jwt.version>8.19</nimbus-jose-jwt.version>
-        <jjwt.version>0.9.0</jjwt.version>
-        <!-- nacos -->
-        <nacos.ip>47.93.119.95</nacos.ip>
-        <nacos.port>8848</nacos.port>
-        <!-- docker -->
-        <docker.host>http://192.168.3.101:2375</docker.host>
-        <docker.maven.plugin.version>1.1.0</docker.maven.plugin.version>
-    </properties>
-    
     <!-- 子模块继承之后，提供作用：锁定版本+子模块不用写groupId和version  -->
     <dependencyManagement>
         <dependencies>
@@ -179,12 +138,6 @@
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jose-jwt.version}</version>
             </dependency>
-            <!--SpringData工具包-->
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-commons</artifactId>
-                <version>${spring-data-commons.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -218,11 +171,36 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <configuration>
+                        <encoding>utf-8</encoding>
+                        <useDefaultDelimiters>true</useDefaultDelimiters>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
@@ -263,7 +241,7 @@
         <profile>
             <id>prod</id>
             <properties>
-                <profileActive>prod</profileActive>
+                <profiles.active>prod</profiles.active>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>

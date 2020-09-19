@@ -1,0 +1,26 @@
+fans:
+  nacos:
+    ip: '@nacos.ip@'
+    port: '@nacos.port@'
+server:
+  port: 8889
+
+spring:
+  application:
+    name: yzy-monitor
+  profiles:
+    active: '@profiles.active@'
+  security: # 配置登录用户名和密码
+    user:
+      name: fans
+      password: fans@123456
+  boot:  # 不显示admin-server的监控信息
+    admin:
+      discovery:
+        ignored-services: ${spring.application.name}
+  cloud:
+    nacos: #此处为nacos 单一配置
+      server-addr: ${fans.nacos.ip}:${fans.nacos.port}
+      config:
+        file-extension: yaml
+        refresh-enabled: true
