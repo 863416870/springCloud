@@ -20,7 +20,7 @@ import java.util.List;
  * 自动配置
  */
 @Configuration
-@EnableMongoRepositories(basePackages = {"cc.young.common.mongodb"},repositoryFactoryBeanClass = CustomMongoRepositoryFactoryBean.class)
+@EnableMongoRepositories(basePackages = {"cc.young"},repositoryFactoryBeanClass = CustomMongoRepositoryFactoryBean.class)
 public class MongoAutoConfigure {
 
     @Autowired

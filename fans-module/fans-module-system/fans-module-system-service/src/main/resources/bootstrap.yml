@@ -20,16 +20,28 @@ spring:
             refresh: false
 #  data:
 #    mongodb:
-#      host: 10.11.16.1
+#      host: 47.93.119.95
 #      port: 27017
-#      database: cm_data
+#      database: fans
+#      replica-set-name: rs
 #      username: admin
 #      password: yzy@123456
   data:
     mongodb:
-      uri: mongodb://10.11.16.1:27017
-      database: user
+      uri:  mongodb://47.93.119.95:27017/mongoStudy
+#  data:
+#    mongodb:
+#      uri:  mongodb://root:1qaz2WSX3edc@10.39.3.92:27017/mongoStudy?replicaSet=rs0&authSource=admin&w=majority&j=true&wtimeout=5000&readPreference=primary
+#      package: com.cym.model
+#      print: true
 #  profiles:
 #    active: '@profileActive@'
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core: DEBUG
 
 

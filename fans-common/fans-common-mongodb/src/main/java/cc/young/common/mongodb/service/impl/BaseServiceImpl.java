@@ -9,6 +9,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ReflectUtil;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
@@ -18,14 +19,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-
 public class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> implements IBaseService<T, ID> {
 
     @Autowired
     protected BaseRepository<T, ID> baseRepository;
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
     public void save(T t) {
         ID id = baseRepository.getCurEntityInformation().getId(t);
         if (StringUtils.isEmpty(id)) {

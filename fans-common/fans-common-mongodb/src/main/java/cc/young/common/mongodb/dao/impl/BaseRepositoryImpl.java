@@ -15,6 +15,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.repository.query.MongoEntityInformation;
 import org.springframework.data.mongodb.repository.support.SimpleMongoRepository;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;

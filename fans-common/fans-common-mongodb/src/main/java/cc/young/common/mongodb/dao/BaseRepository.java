@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @param <T> 实体类的泛型
  * @param <ID> id的泛型
  */
-@NoRepositoryBean
+@NoRepositoryBean//告诉JPA不要创建对应接口的bean对象
 public interface BaseRepository<T extends BaseEntity, ID extends Serializable> extends MongoRepository<T, ID>,BaseRepositoryEnhance<T, ID>  {
 
 }

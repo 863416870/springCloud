@@ -43,11 +43,11 @@ public class R<T> implements Serializable {
 	private String  requestUri;
 
 	public static <T> R<T> ok() {
-		return restResult(null, Code.SUCCESS.getCode(), null);
+		return restResult(null, Code.SUCCESS.getCode(), Code.SUCCESS.getZhDescription());
 	}
 
 	public static <T> R<T> ok(T data) {
-		return restResult(data, Code.SUCCESS.getCode(), null);
+		return restResult(data, Code.SUCCESS.getCode(), Code.SUCCESS.getZhDescription());
 	}
 
 	public static <T> R<T> ok(T data, String msg) {
