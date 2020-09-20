@@ -24,9 +24,14 @@ public class UserController {
 
     @GetMapping("/list")
     public R<List<User>> list() {
+
         return R.ok(userService.list());
     }
 
+    @GetMapping("/listin")
+    public R<List<User>> listin() {
+        return R.ok(userService.listin());
+    }
 
     @PostMapping("/page")
     public PageResult<User> page(@RequestBody User user) {

@@ -26,7 +26,6 @@ import java.util.Objects;
 
 public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> extends SimpleMongoRepository<T, ID> implements BaseRepository<T, ID> {
 
-
     private MongoOperations mongoOperations;
     private MongoEntityInformation<T, ID> entityInformation;
 
@@ -36,7 +35,6 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
         entityInformation = metadata;
     }
 
-
     @Override
     public MongoEntityInformation<T, ID> getCurEntityInformation() {
         return entityInformation;
@@ -44,11 +42,14 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
 
 
     @Override
-    public PageResult<T> findPage(T t) {
+    public PageResult<T> findPage(T t,List<String> includeFields,List<String> excludeFields) {
 
         Pageable pageable = getPage(t);
         Query query = new Query();
-
+        //查询包含字段
+        setIncludeFields(query,includeFields);
+        //查询不包含字段
+        setExcludeFields(query,excludeFields);
         // 查询条件
         setQueryParams(query, t, entityInformation.getJavaType());
         long count = mongoOperations.count(query, entityInformation.getCollectionName());
@@ -98,8 +99,42 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
     private void setQueryParams(Query query, T t, Class<T> entityClass) {
         setWhereParams(query, t, entityClass);
         setOrderByParams(query, t);
+
     }
 
+    /**
+     * 设置包含字段
+     * @param query
+     * @param includeFields
+     */
+    private void setIncludeFields(Query query,List<String> includeFields) {
+        if (CollectionUtil.isNotEmpty(includeFields)){
+            for (String includeField : includeFields) {
+                query.fields().include(includeField);
+            }
+        }
+    }
+
+    /**
+     * 设置排除字段
+     * @param query
+     * @param excludeFields
+     */
+    private void setExcludeFields(Query query,List<String> excludeFields) {
+
+        if (CollectionUtil.isNotEmpty(excludeFields)){
+            for (String excludeField : excludeFields) {
+                query.fields().exclude(excludeField);
+            }
+        }
+    }
+
+    /**
+     * 设置查询参数
+     * @param query
+     * @param t
+     * @param entityClass
+     */
     private void setWhereParams(Query query, T t, Class<T> entityClass) {
         List<Criteria> addCriteriaList = new ArrayList<>();
         List<Criteria> orCriteriaList = new ArrayList<>();
@@ -115,6 +150,7 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
                 } else {
                     addCriteriaList.add(CriteriaUtil.eq(fieldName, fieldValue));
                 }
+
             }
         });
 

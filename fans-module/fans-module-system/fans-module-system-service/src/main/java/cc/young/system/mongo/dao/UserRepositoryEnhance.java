@@ -3,6 +3,7 @@ package cc.young.system.mongo.dao;
 import cc.young.system.mongo.entity.User;
 import cc.young.system.mongo.vo.UserCountGroupBy;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface UserRepositoryEnhance {
@@ -12,6 +13,8 @@ public interface UserRepositoryEnhance {
      * @return
      */
     List<User> findListBySexType(String sexType);
+
+    List<User> findListByIds(Collection<String> ids);
 
     List<UserCountGroupBy>  countUserGroupBySex(Integer sex);
 }

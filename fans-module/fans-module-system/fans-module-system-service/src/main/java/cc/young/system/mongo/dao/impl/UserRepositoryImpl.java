@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
+import java.util.Collection;
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepositoryEnhance {
@@ -21,6 +22,14 @@ public class UserRepositoryImpl implements UserRepositoryEnhance {
         Integer sex = "M".equals(sexType) ? 1 : 2;
         Criteria where = Criteria.where("sex").is(sex);
         Query query = Query.query(where);
+        return mongoOperations.find(query, User.class);
+    }
+
+    @Override
+    public List<User> findListByIds(Collection<String> ids) {
+        Criteria where = Criteria.where("id").in(ids);
+        Query query = Query.query(where);
+//        query.fields().include("id");//查找指定字段
         return mongoOperations.find(query, User.class);
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 public interface IUserService extends IBaseService<User,String> {
 
     List<User> list();
-
+    List<User> listin();
     PageResult<User> page(User user);
 
     List<User> findListBySexType(String sexType);
