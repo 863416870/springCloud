@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OrderBy {
 
-
     private String columnName;
 
     private Opt mode;
