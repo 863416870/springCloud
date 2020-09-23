@@ -13,6 +13,7 @@
         <module>fans-monitor</module>
         <module>fans-gateway</module>
         <module>fans-module</module>
+        <module>fans-pay</module>
     </modules>
     <!-- Jar 版本控制 -->
     <properties>
