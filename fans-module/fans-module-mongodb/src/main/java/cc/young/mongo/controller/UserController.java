@@ -1,10 +1,10 @@
-package cc.young.system.mongo.controller;
+package cc.young.mongo.controller;
 
 import cc.yound.common.core.util.R;
 import cc.young.common.mongodb.entity.PageResult;
-import cc.young.system.mongo.entity.User;
-import cc.young.system.mongo.service.IUserService;
-import cc.young.system.mongo.vo.UserCountGroupBy;
+import cc.young.mongo.entity.User;
+import cc.young.mongo.service.IUserService;
+import cc.young.mongo.vo.UserCountGroupBy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

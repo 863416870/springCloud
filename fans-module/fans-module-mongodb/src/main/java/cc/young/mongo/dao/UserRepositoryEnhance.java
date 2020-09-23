@@ -1,7 +1,7 @@
-package cc.young.system.mongo.dao;
+package cc.young.mongo.dao;
 
-import cc.young.system.mongo.entity.User;
-import cc.young.system.mongo.vo.UserCountGroupBy;
+import cc.young.mongo.entity.User;
+import cc.young.mongo.vo.UserCountGroupBy;
 
 import java.util.Collection;
 import java.util.List;

@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>fans-module-system</module>
+        <module>fans-module-mongodb</module>
     </modules>
 
 

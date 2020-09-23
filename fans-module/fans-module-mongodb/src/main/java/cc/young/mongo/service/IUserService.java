@@ -1,9 +1,9 @@
-package cc.young.system.mongo.service;
+package cc.young.mongo.service;
 
 import cc.young.common.mongodb.entity.PageResult;
 import cc.young.common.mongodb.service.IBaseService;
-import cc.young.system.mongo.entity.User;
-import cc.young.system.mongo.vo.UserCountGroupBy;
+import cc.young.mongo.entity.User;
+import cc.young.mongo.vo.UserCountGroupBy;
 
 import java.util.List;
 
