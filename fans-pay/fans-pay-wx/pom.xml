@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>fans-pay-wx</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>cc.young</groupId>
+            <artifactId>fans-pay-core</artifactId>
+            <version>${common.lib}</version>
+        </dependency>
+    </dependencies>
 
 </project>

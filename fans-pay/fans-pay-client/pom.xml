@@ -10,6 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>fans-pay-client</artifactId>
-    
 
+    <dependencies>
+        <!-- 微信支付  -->
+        <dependency>
+            <groupId>cc.young</groupId>
+            <artifactId>fans-pay-wx</artifactId>
+            <version>${common.lib}</version>
+        </dependency>
+    </dependencies>
 </project>

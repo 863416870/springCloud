@@ -11,5 +11,37 @@
 
     <artifactId>fans-pay-core</artifactId>
 
+    <dependencies>
+        <!-- 开源多维码生成工具 -->
+        <dependency>
+            <groupId>com.github.xkzhangsan</groupId>
+            <artifactId>xk-time</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cc.young</groupId>
+            <artifactId>fans-common-core</artifactId>
+            <version>${common.lib}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <!-- 公共插件 -->
+        <plugins>
+            <!--处理资源文件插件，默认的资源文件在src/main/resources目录下,可以实现filter-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <!-- 过滤不需要转码的后缀为pem、pfx的证书文件 -->
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>pem</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>pfx</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>p12</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
 
+        </plugins>
+    </build>
 </project>
