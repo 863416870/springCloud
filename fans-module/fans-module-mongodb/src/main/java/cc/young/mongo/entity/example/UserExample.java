@@ -1,8 +1,8 @@
-package cc.young.system.mongo.entity.example;
+package cc.young.mongo.entity.example;
 
 import cc.young.common.mongodb.entity.BaseEntity;
 import cc.young.common.mongodb.entity.Opt;
-import cc.young.system.mongo.entity.User;
+import cc.young.mongo.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Transient;
 

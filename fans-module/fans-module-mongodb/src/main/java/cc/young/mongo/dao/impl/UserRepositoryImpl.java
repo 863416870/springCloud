@@ -1,8 +1,8 @@
-package cc.young.system.mongo.dao.impl;
+package cc.young.mongo.dao.impl;
 
-import cc.young.system.mongo.dao.UserRepositoryEnhance;
-import cc.young.system.mongo.entity.User;
-import cc.young.system.mongo.vo.UserCountGroupBy;
+import cc.young.mongo.dao.UserRepositoryEnhance;
+import cc.young.mongo.entity.User;
+import cc.young.mongo.vo.UserCountGroupBy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;

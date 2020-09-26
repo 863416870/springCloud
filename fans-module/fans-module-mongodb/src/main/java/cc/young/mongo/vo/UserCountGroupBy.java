@@ -1,4 +1,4 @@
-package cc.young.system.mongo.vo;
+package cc.young.mongo.vo;
 
 import lombok.Data;
 

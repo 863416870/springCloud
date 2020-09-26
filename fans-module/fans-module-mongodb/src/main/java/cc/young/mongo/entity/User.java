@@ -1,6 +1,6 @@
-package cc.young.system.mongo.entity;
+package cc.young.mongo.entity;
 
-import cc.young.system.mongo.entity.example.UserExample;
+import cc.young.mongo.entity.example.UserExample;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;

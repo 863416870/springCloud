@@ -1,15 +1,13 @@
-package cc.young.system.mongo.service.impl;
+package cc.young.mongo.service.impl;
 
 import cc.young.common.mongodb.entity.Opt;
 import cc.young.common.mongodb.entity.PageResult;
 import cc.young.common.mongodb.service.impl.BaseServiceImpl;
-import cc.young.system.mongo.dao.UserRepository;
-import cc.young.system.mongo.entity.User;
-import cc.young.system.mongo.entity.example.UserExample;
-import cc.young.system.mongo.service.IUserService;
-import cc.young.system.mongo.vo.UserCountGroupBy;
+import cc.young.mongo.dao.UserRepository;
+import cc.young.mongo.entity.User;
+import cc.young.mongo.service.IUserService;
+import cc.young.mongo.vo.UserCountGroupBy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
