@@ -1,7 +1,7 @@
 package cc.young.pay.client.config;
 
-import com.yzy.common.core.config.BaseSwaggerConfig;
-import com.yzy.common.core.dto.SwaggerProperties;
+import cc.yound.common.core.config.BaseSwaggerConfig;
+import cc.yound.common.core.properties.SwaggerProperties;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -15,10 +15,10 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     @Override
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
-                .apiBasePackage("com.yzy.pay.client.controller")
+                .apiBasePackage("cc.young.pay.client.controller")
                 .title("支付平台")
                 .description("支付平台相关接口文档")
-                .contactName("yzy")
+                .contactName("fans")
                 .version("1.0")
                 .enableSecurity(true)
                 .build();
