@@ -10,10 +10,6 @@ public class HttpApiUrl {
     // 1）提交刷卡支付
     public static String PAY_MICROPAY = "https://api.mch.weixin.qq.com/pay/micropay";
 
-
-
-
-
     // 2）被扫支付查询API
     public static String PAY_QUERY_API = "https://api.mch.weixin.qq.com/pay/orderquery";
 

@@ -4,6 +4,7 @@ import cc.yound.common.core.exception.FailedException;
 import cc.young.system.model.TemplateMsg;
 import cc.young.system.model.WxConfig;
 import cc.young.system.util.WeixinApiUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ public abstract class AbstractWxPay {
     public static final String APP = "APP";
     public static final String NATIVE = "NATIVE";
     public static final String JSAPI = "JSAPI";
-
+    @Autowired
     protected WxConfig wxConfig;
 
 
