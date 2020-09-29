@@ -1,0 +1,7 @@
+wxpay:
+  appId: wx8213f5fa6c4bf4f1
+  appSecret: 8185efa7accd876169c116ff0a11d2f8
+  mchId: 1602930454
+  partnerKey: yingzhiyanshuguanggongyuan200928
+  certPath: apiclient_cert.p1 证书路径，在微信商户后台下载
+  domain: userapp.aiyzy.com

@@ -19,4 +19,9 @@ public class FailedException extends HttpException {
         this.httpStatusCode =  HttpStatus.INTERNAL_SERVER_ERROR.value();
         this.message = Code.FAIL.getZhDescription();
     }
+    public FailedException(String message) {
+        this.code = Code.FAIL.getCode();
+        this.httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();
+        this.message = message;
+    }
 }

@@ -1,7 +1,12 @@
 package cc.young.system.controller;
 
+import cc.young.system.service.WxService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * description: TestController
@@ -11,8 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("test")
 public class TestController {
-//    @Autowired
-//    private MongoDbFactory mongoDbFactory;
+    @Autowired
+    private WxService wxService;
 
+    /**
+     * 小程序openId
+     */
+    @RequestMapping("/getOpenId")
+    public Map<String,Object> getOpenId(@RequestParam("code") String code){
+        return wxService.getOpenId(code);
+    }
 
 }
