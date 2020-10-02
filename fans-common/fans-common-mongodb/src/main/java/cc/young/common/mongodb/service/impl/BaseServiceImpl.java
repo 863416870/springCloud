@@ -62,7 +62,7 @@ public class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> impl
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
     public void deleteById(ID id) {
         baseRepository.deleteById(id);
     }
@@ -71,5 +71,11 @@ public class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> impl
     @SneakyThrows
     public List<T> selectBatchIds(Collection<ID> ids) {
         return CollectionUtil.newArrayList(baseRepository.findAllById(ids));
+    }
+
+    @Override
+    public void deleteBatchIds(Collection<ID> ids) {
+        Iterable<T> allById = baseRepository.findAllById(ids);
+        baseRepository.deleteAll(allById);
     }
 }

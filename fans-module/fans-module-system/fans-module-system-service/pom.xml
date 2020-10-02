@@ -17,6 +17,11 @@
             <artifactId>fans-common-core</artifactId>
             <version>${common.lib}</version>
         </dependency>
+        <dependency>
+            <groupId>cc.young</groupId>
+            <artifactId>fans-common-redis</artifactId>
+            <version>${common.lib}</version>
+        </dependency>
     </dependencies>
     <build>
         <filters>

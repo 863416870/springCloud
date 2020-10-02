@@ -14,7 +14,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-@ConditionalOnProperty(value = "shuguang.redis.enable", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(value = "fans.redis.enable", havingValue = "true", matchIfMissing = true)
 public class SGRedisAutoConfiguration {
 
     @Bean(name = "redisTemplate")

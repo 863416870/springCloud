@@ -19,10 +19,6 @@ public interface IBaseService<T extends BaseEntity,ID extends Serializable> {
      void deleteById(ID id);
 
      List<T> selectBatchIds(Collection<ID> ids);
-/*
 
-
-
-
-     int deleteBatchIds(Collection<ID> var1);*/
+     void deleteBatchIds(Collection<ID> ids);
 }

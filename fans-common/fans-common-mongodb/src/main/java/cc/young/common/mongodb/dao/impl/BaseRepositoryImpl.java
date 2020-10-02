@@ -150,7 +150,6 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
                 } else {
                     addCriteriaList.add(CriteriaUtil.eq(fieldName, fieldValue));
                 }
-
             }
         });
 
