@@ -1,7 +1,5 @@
-package cc.yound.common.core.util;
+package cc.young.common.util;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -17,29 +15,24 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@ApiModel(value = "返回类")
 public class R<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "code")
 	@Getter
 	@Setter
 	private int code;
 
 	@Getter
 	@Setter
-	@ApiModelProperty(value = "描述")
 	private String msg;
 
 	@Getter
 	@Setter
-	@ApiModelProperty(value = "对象")
 	private T data;
 
 	@Getter
 	@Setter
-	@ApiModelProperty(value = "请求路径")
 	private String  requestUri;
 
 	public static <T> R<T> ok() {

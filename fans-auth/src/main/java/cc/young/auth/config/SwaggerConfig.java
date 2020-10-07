@@ -1,4 +1,4 @@
-package cc.young.mongo.config;
+package cc.young.auth.config;
 
 import cc.young.common.swagger.config.BaseSwaggerConfig;
 import cc.young.common.swagger.properties.SwaggerProperties;
@@ -15,9 +15,9 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     @Override
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
-                .apiBasePackage("cc.young.mongo.controller")
-                .title("mongodb测试")
-                .description("mongodb相关接口文档")
+                .apiBasePackage("cc.young.auth.controller")
+                .title("认证中心")
+                .description("认证中心相关接口文档")
                 .contactName("fans")
                 .version("1.0")
                 .enableSecurity(true)

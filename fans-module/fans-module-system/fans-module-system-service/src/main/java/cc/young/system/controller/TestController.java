@@ -50,4 +50,10 @@ public class TestController {
         return R.ok();
     }
 
+    public static void main(String[] args) {
+        long maxMemory = Runtime.getRuntime().maxMemory();
+        long totalMemory = Runtime.getRuntime().totalMemory();
+        System.out.println(maxMemory/1024/1024+"MB");
+        System.out.println(totalMemory/1024/1024+"MB");
+    }
 }

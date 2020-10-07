@@ -14,6 +14,7 @@
         <module>fans-gateway</module>
         <module>fans-module</module>
         <module>fans-pay</module>
+        <module>fans-auth</module>
     </modules>
     <!-- Jar 版本控制 -->
     <properties>
@@ -161,6 +162,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <!-- nacos client -->
         <dependency>

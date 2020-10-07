@@ -1,4 +1,4 @@
-package cc.yound.common.core.util;
+package cc.young.common.util;
 
 /**
  * 公共消息码

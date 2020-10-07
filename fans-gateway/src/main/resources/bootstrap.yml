@@ -10,10 +10,12 @@ server:
   port: 8888
 
 spring:
-  profiles:
-    active: '@profileActive@'
+#  profiles:
+#    active: '@profileActive@'
   application:
     name: @artifactId@
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     nacos: #此处为nacos 单一配置
       server-addr: ${fans.nacos.ip}:${fans.nacos.port}
@@ -29,13 +31,46 @@ spring:
         enabled: true
         lower-case-service-id: true #使用小写service-id
       routes:
-        #诊所运营端后台模块
+        #mongo后台模块
         - id: mongodb-service      # 唯一的服务ID
           uri: lb://mongodb-service # 注册中心的服务名称，实现负载均衡
           predicates:
             - Path=/mongodb/**  #所有业务的请求前缀
           filters:
             - StripPrefix=1
+        #auth模块
+        - id: fans-auth
+          uri: lb://fans-auth
+          predicates:
+            - Path=/fans-auth/**
+          filters:
+            - StripPrefix=1
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:8888/mall-auth/rsa/publicKey' #配置RSA的公钥访问地址
+  redis:
+    database: 0
+    port: 6379
+    host: 47.93.119.95
+    password:
+secure:
+  ignore:
+    urls: #配置白名单路径
+      - "/doc.html"
+      - "/swagger-resources/**"
+      - "/swagger/**"
+      - "/**/v2/api-docs"
+      - "/**/*.js"
+      - "/**/*.css"
+      - "/**/*.png"
+      - "/**/*.ico"
+      - "/webjars/springfox-swagger-ui/**"
+      - "/actuator/**"
+      - "/fans-auth/oauth/token"
+      - "/fans-auth/rsa/publicKey"
 logging:
   level:
     org:
