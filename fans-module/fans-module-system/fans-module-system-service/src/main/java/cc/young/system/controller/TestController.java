@@ -55,5 +55,9 @@ public class TestController {
         long totalMemory = Runtime.getRuntime().totalMemory();
         System.out.println(maxMemory/1024/1024+"MB");
         System.out.println(totalMemory/1024/1024+"MB");
+        ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+        System.out.println(systemClassLoader);
+        System.out.println(systemClassLoader.getParent());
+        System.out.println(String.class.getClassLoader());
     }
 }
